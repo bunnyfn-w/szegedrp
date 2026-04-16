@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szeged RP | Emergency Hamburg</title>
+    <style>
+        :root {
+            --primary-blue: #007bff;
+            --secondary-blue: #0056b3;
+            --dark-bg: #0a0a0b;
+            --card-bg: #16161a;
+            --success-green: #2ecc71;
+            --danger-red: #e74c3c;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigáció */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(10, 10, 11, 0.95);
+            position: fixed;
+            width: 84%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo { font-weight: 800; font-size: 1.6rem; color: var(--primary-blue); text-shadow: 0 0 10px rgba(0,123,255,0.3); }
+        .nav-links a { color: #ccc; text-decoration: none; margin-left: 25px; transition: 0.3s; font-size: 0.9rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary-blue); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://i.imgur.com/KJBmoN2.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: clamp(3rem, 10vw, 5rem); margin-bottom: 10px; font-weight: 900; letter-spacing: -2px; }
+        
+        .status-badge {
+            background: rgba(88, 101, 242, 0.2);
+            border: 1px solid #5865F2;
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #5865F2;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dot { height: 10px; width: 10px; background-color: var(--success-green); border-radius: 50%; display: inline-block; box-shadow: 0 0 10px var(--success-green); }
+
+        /* Gombok */
+        .btn {
+            padding: 18px 40px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        .btn:hover { background: var(--secondary-blue); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,123,255,0.4); }
+
+        /* Tagfelvétel Szekció */
+        .content { padding: 100px 10%; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+
+        .recruitment-table {
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border-collapse: collapse;
+        }
+
+        .recruitment-table th, .recruitment-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .recruitment-table th { background: rgba(255,255,255,0.02); color: var(--primary-blue); }
+
+        .status-pill {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Automatikus státusz színek és szövegek */
+        .status-pill[data-status="open"]::before { content: "● NYITVA"; color: var(--success-green); }
+        .status-pill[data-status="closed"]::before { content: "○ ZÁRVA"; color: var(--danger-red); }
+        .status-pill[data-status="gamepass"]::before { content: "● GAMEPASS"; color: var(--success-green); }
+        .status-pill[data-status="gamepassclosed"]::before { content: "○ GAMEPASS"; color: var(--danger-red); }
+
+        /* Footer */
+        footer { padding: 50px; text-align: center; background: #050505; color: #555; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SZEGED RP</div>
+        <div class="nav-links">
+            <a href="#home">Kezdőlap</a>
+            <a href="#recruitment">Tagfelvétel</a>
+            <a href="#rules">Szabályzat</a>
+            <a href="https://discord.com/invite/adNNfeMEU8" target="_blank">Discord</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="status-badge">
+            <span class="dot"></span>
+            <span id="discord-count">Betöltés...</span> játékos a közösségben
+        </div>
+        <h1>SZEGED RP</h1>
+        <p style="font-size: 1.2rem; color: #aaa; max-width: 700px;">
+            Csatlakozz Szeged legprofibb Emergency Hamburg szerveréhez. Valósághű szirénák, egyedi skinek és komoly RP élmény vár rád minden nap!
+        </p>
+        
+        <a href="https://www.roblox.com/games/7711635737/Emergency-Hamburg" class="btn" target="_blank">Szerver Csatlakozás</a>
+        <p style="margin-top: 15px; font-size: 1rem; color: var(--primary-blue); font-weight: bold; letter-spacing: 1px;">
+            CSATLAKOZÁSI KÓD: 7bdvva2p
+        </p>
+    </section>
+
+    <section class="content" id="recruitment">
+        <h2>Tagfelvétel Állapota</h2>
+        <table class="recruitment-table">
+            <thead>
+                <tr>
+                    <th>Frakció Neve</th>
+                    <th>Állapot</th>
+                    <th>Jelentkezés</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Csongrád-Csanád Vármegyei Rendőr-főkapitányság</td>
+                    <td><span class="status-pill" data-status="open"></span></td>
+                    <td><a href="#" style="color: white;">Jelentkezési lap</a></td>
+                </tr>
+                <tr>
+                    <td>Országos Mentőszolgálat (OMSZ)</td>
+                    <td><span class="status-pill" data-status="open"></span></td>
+                    <td><a href="#" style="color: white;">Jelentkezési lap</a></td>
+                </tr>
+                <tr>
+                    <td>Katasztrófavédelem (Tűzoltóság)</td>
+                    <td><span class="status-pill" data-status="closed"></span></td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Terrorelhárítási Központ (SEK)</td>
+                    <td><span class="status-pill" data-status="gamepassclosed"></span></td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="content" id="rules" style="background: rgba(255,255,255,0.02);">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2>Szerver Szabályzat</h2>
+            <p>Mielőtt csatlakoznál, kérjük olvasd el a szabályzatunkat, hogy elkerüld a szankciókat. A szabályzat nem ismerete nem mentesít a felelősség alól!</p>
+            <br>
+            <a href="https://discord.com/invite/adNNfeMEU8" class="btn" style="background: transparent; border: 1px solid white;">Szabályzat a Discordon</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Szeged RP - Emergency Hamburg Community</p>
+        <p style="margin-top: 10px;">Ez a weboldal nem áll kapcsolatban a Roblox Corporation-nel vagy az Emergency Services-szel.</p>
+    </footer>
+
+    <script>
+        async function updateDiscordCount() {
+            const inviteCode = "adNNfeMEU8"; 
+            try {
+                const response = await fetch(`https://discord.com/api/v10/invites/${inviteCode}?with_counts=true`);
+                const data = await response.json();
+                if(data.approximate_presence_count !== undefined) {
+                    document.getElementById('discord-count').innerText = data.approximate_presence_count + " Online";
+                } else {
+                    document.getElementById('discord-count').innerText = "Aktív";
+                }
+            } catch (e) {
+                document.getElementById('discord-count').innerText = "Online";
+            }
+        }
+        updateDiscordCount();
+        setInterval(updateDiscordCount, 60000);
+    </script>
+
+</body>
+</html>
